@@ -1,0 +1,8 @@
+TITLE_PADX = 5
+TITLE_PADY = (30,30)
+TITLE_FONT = ('Verdana', 20, 'bold')
+
+
+SUBTITLE_PADX = 5
+SUBTITLE_PADY = (20,10)
+SUBTITLE_FONT = ('Verdana', 16)
