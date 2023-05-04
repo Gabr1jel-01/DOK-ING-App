@@ -1,6 +1,6 @@
 import customtkinter as ctk
 from app_constants import *
-import bcrypt
+from bcrypt import *
 import sqlite3
 from tkinter import messagebox
 from tkinter import *
