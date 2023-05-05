@@ -12,6 +12,7 @@ def run_app():
         username = username_entry_box.get()
         password = password_entry_box.get()
         
+        
         if username !='' and password != '':
             cursor.execute('SELECT username FROM users WHERE username = ?', [username])
             if cursor.fetchone() is not None:
@@ -30,13 +31,59 @@ def run_app():
             messagebox.showerror('Error', 'Please enter both Username and Password')
         if cursor.fetchone() is not None:
             result = cursor.fetchone()
-        if result:
-            print(result)
+            
+    
+     
+    def log_in_button_action():
+       
+        #region MAIN WINDOW 2
+        main_window.destroy()
         
         
+        main_window2 = ctk.CTk()
+        main_window2.title('SmartKey')
+        main_window2.geometry('600x500')
+        ctk.set_appearance_mode('Dark')
         
+        #endregion
         
-        pass
+        #region APP TITLE 2
+        label_main_window2 = ctk.CTkLabel(main_window,
+                                text='SMART KEY APPLICATION by ALGEBRA',
+                                font=TITLE_FONT)
+        label_main_window2.pack(padx=TITLE_PADX, pady=TITLE_PADY)
+        #endregion
+        
+        #region USERNAME 2
+
+        username_title2 = ctk.CTkLabel(main_window,
+                            text='Username',
+                            font=SUBTITLE_FONT)
+        username_title2.pack(padx=SUBTITLE_PADX, pady=SUBTITLE_PADY)
+
+        username_entry_box = ctk.CTkEntry(main_window,
+                            width=200,
+                            height=8)
+        username_entry_box.pack()
+        #endregion
+        
+        #region PASSWORD 2
+
+        password_title2 = ctk.CTkLabel(main_window,
+                            text='Password',
+                            font=SUBTITLE_FONT)
+        password_title2.pack(padx=SUBTITLE_PADX, pady=SUBTITLE_PADY)
+
+        password_entry_box2 = ctk.CTkEntry(main_window,
+                            width=200,
+                            height=8,
+                            show='*')
+        password_entry_box2.pack()
+
+        #endregion
+        
+        main_window2.mainloop()
+        
         
     #region MAIN WINDOW
     ctk.set_appearance_mode('Dark')
@@ -100,11 +147,15 @@ def run_app():
     already_acc_label.pack(padx=10, pady=2)
     #endregion
     
-    #region LOG_IN
+    #region LOG_IN Button
     
+    log_in_button = ctk.CTkButton(main_window,
+                                 width=140,
+                                 height=20,
+                                 text='Log In',
+                                 command= log_in_button_action)
+    log_in_button.pack(padx=15,pady=25)
     #endregion
-    
-    
     
     #region SQLITE3
     
@@ -120,7 +171,7 @@ def run_app():
     #endregion
     
     main_window.mainloop()
-
+    
 
 
 
