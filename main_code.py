@@ -1,6 +1,6 @@
 import customtkinter as ctk
 from app_constants import *
-from bcrypt import *
+import bcrypt
 import sqlite3
 from tkinter import messagebox
 from tkinter import *
@@ -12,24 +12,32 @@ def run_app():
         username = username_entry_box.get()
         password = password_entry_box.get()
         
-        if username != '' and password != '':
-            cursor.execute('SELECT username FROM users WHERE username=?', [username])
-            if cursor.fetchone() is not NONE:
+        if username !='' and password != '':
+            cursor.execute('SELECT username FROM users WHERE username = ?', [username])
+            if cursor.fetchone() is not None:
                 messagebox.showerror('Error', 'Username already exists.')
+                result = cursor.fetchone()
+                print(result)           
+            
             else:
                 encoded_password = password.encode('utf-8')
                 hashed_password = bcrypt.hashpw(encoded_password, bcrypt.gensalt())
                 #print(hashed_password)
-                cursor.execute('INSERT INTO users VALUE (?,?)', [username, hashed_password])
+                cursor.execute('INSERT INTO users VALUES (?,?)', [username, hashed_password])
                 sql_connection.commit()
                 messagebox.showinfo('Success', 'Account has been created!')
         else:
             messagebox.showerror('Error', 'Please enter both Username and Password')
+        if cursor.fetchone() is not None:
+            result = cursor.fetchone()
+        if result:
+            print(result)
+        
+        
+        
         
         pass
         
-
-
     #region MAIN WINDOW
     ctk.set_appearance_mode('Dark')
     main_window = ctk.CTk()
@@ -92,6 +100,12 @@ def run_app():
     already_acc_label.pack(padx=10, pady=2)
     #endregion
     
+    #region LOG_IN
+    
+    #endregion
+    
+    
+    
     #region SQLITE3
     
     sql_connection = sqlite3.connect('database.db')
@@ -99,15 +113,12 @@ def run_app():
     
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS users (
-                       username TEXT NOT NULL,
-                       password TEXT NOT NULL)''')
+            username TEXT NOT NULL,
+            password TEXT NOT NULL)''')
+    
     
     #endregion
     
-    
-    
-    
-
     main_window.mainloop()
 
 
