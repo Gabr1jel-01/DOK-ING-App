@@ -218,9 +218,6 @@ cursor.execute('''
     
 #endregion
     
-    
-    
-
 main_window.mainloop()
     
 
