@@ -9,16 +9,34 @@ from tkinter import *
 #region FUNKCIJE
 def successfull_login():
     
-    ctk.set_appearance_mode('Dark')
+    ctk.set_appearance_mode('System')
     main_window3 = ctk.CTk()
-    main_window3.title('SmartKey')
-    main_window3.geometry('600x500')
+    main_window3.title('TERMINATOR 2 by DOK-ING')
+    main_window3.geometry('563x331')
+    main_window3.iconbitmap('DOK-ING-Logo.ico')
+    
+    bg = PhotoImage( file = "hydrogen.ppm")
+    bg_label = Label( main_window3, image = bg)
+    bg_label.place(x = 0,y = 0)
     
     title = Label(main_window3,
-                  text='Smart House',
+                  text='TERMINATOR 2 by DOK-ING',
                   font=TITLE_FONT,
-                  bg='grey')
-    title.grid(row=0,column=0)
+                  )
+    title.pack(padx=0,pady=0)
+    
+    title_above_listbox = Label(main_window3,
+                                text='Ispis podataka')
+    
+    list_box = Listbox(main_window3,
+                       bg='white',
+                       highlightcolor='#33FFFC',
+                       width=40)
+    
+    list_box.pack(padx=10,pady=100, side=LEFT)
+    
+    
+    
     
     
     
@@ -74,7 +92,11 @@ def sign_up_button_action():
         messagebox.showerror('Error', 'Please enter both Username and Password')
     if cursor.fetchone() is not None:
         result = cursor.fetchone()
-            
+
+def back_to_sign_up_action():
+    main_window2.destroy()
+    new_main_window()
+    
 def log_in_button_action():
     
     global username_entry_box2
@@ -83,15 +105,16 @@ def log_in_button_action():
     #region MAIN WINDOW 2
     global main_window2
     main_window2 = ctk.CTk()
-    main_window2.title('SmartKey')
-    main_window2.geometry('600x500')
-    ctk.set_appearance_mode('Dark')
+    main_window2.title('TERMINATOR 2 by DOK-ING')
+    main_window2.geometry('563x331')
+    main_window2.iconbitmap('DOK-ING-Logo.ico')
+    ctk.set_appearance_mode('System')
         
     #endregion
         
     #region APP TITLE 2
     label_main_window2 = ctk.CTkLabel(main_window2,
-                                text='SMART KEY APPLICATION by ALGEBRA',
+                                text='TERMINATOR 2 by DOK-ING',
                                 font=TITLE_FONT)
     label_main_window2.pack(padx=TITLE_PADX, pady=TITLE_PADY)
     #endregion
@@ -140,105 +163,109 @@ def log_in_button_action():
                                     width=140,
                                     height=20,
                                     text='Back to sign up page',
-                                    command= log_in_button_action)
+                                    command= back_to_sign_up_action)
     
     back_to_sign_up.pack(padx=20,pady=30)
-    
-    
-    
     
     
     main_window2.mainloop()
 #endregion
 
-  
-#region MAIN WINDOW
-ctk.set_appearance_mode('Dark')
-main_window = ctk.CTk()
-main_window.title('SmartKey')
-main_window.geometry('600x500')
-#endregion
+#region NEW MAIN WINDOW
+def new_main_window():
+    #region MAIN WINDOW
+    ctk.set_appearance_mode('System')
+    main_window = ctk.CTk()
+    main_window.title('TERMINATOR 2 by DOK-ING')
+    main_window.geometry('563x331')
+    main_window.iconbitmap('DOK-ING-Logo.ico')
+    #endregion
 
-#region APP TITLE
-   
-label_main_window = ctk.CTkLabel(main_window,
-                                    text='SMART KEY APPLICATION by ALGEBRA',
-                                    font=TITLE_FONT)
-label_main_window.pack(padx=TITLE_PADX, pady=TITLE_PADY)
-#endregion
+    #region APP TITLE
+    
+    label_main_window = ctk.CTkLabel(main_window,
+                                        text='TERMINATOR 2 by DOK-ING',
+                                        font=TITLE_FONT)
+    label_main_window.pack(padx=TITLE_PADX, pady=TITLE_PADY)
+    #endregion
 
-#region USERNAME
+    #region USERNAME
 
-username_title = ctk.CTkLabel(main_window,
-                                text='Username',
-                                font=SUBTITLE_FONT)
-username_title.pack(padx=SUBTITLE_PADX, pady=SUBTITLE_PADY)
-
-username_entry_box = ctk.CTkEntry(main_window,
-                                width=200,
-                                height=8)
-username_entry_box.pack()
-#endregion
-
-#region PASSWORD
-
-password_title = ctk.CTkLabel(main_window,
-                                text='Password',
-                                font=SUBTITLE_FONT)
-password_title.pack(padx=SUBTITLE_PADX, pady=SUBTITLE_PADY)
-password_entry_box = ctk.CTkEntry(main_window,
-                                width=200,
-                                height=8,
-                                show='*')
-password_entry_box.pack()
-
-#endregion
-
-#region SIGN UP BUTTON
-
-sign_up_button = ctk.CTkButton(main_window,
-                                 width=140,
-                                 height=20,
-                                 text='Sign Up',
-                                 command= sign_up_button_action)
-sign_up_button.pack(padx=0,pady=50)
-
-#endregion
-
-#region ALREADY ACC LABEL
-   
-already_acc_label = ctk.CTkLabel(main_window,
-                                    text='Already have an account?',
+    username_title = ctk.CTkLabel(main_window,
+                                    text='Username',
                                     font=SUBTITLE_FONT)
-already_acc_label.pack(padx=10, pady=2)
+    username_title.pack(padx=SUBTITLE_PADX, pady=SUBTITLE_PADY)
+    global username_entry_box
+    username_entry_box = ctk.CTkEntry(main_window,
+                                    width=200,
+                                    height=8)
+    username_entry_box.pack()
+    #endregion
+
+    #region PASSWORD
+
+    password_title = ctk.CTkLabel(main_window,
+                                    text='Password',
+                                    font=SUBTITLE_FONT)
+    password_title.pack(padx=SUBTITLE_PADX, pady=SUBTITLE_PADY)
+    global password_entry_box
+    password_entry_box = ctk.CTkEntry(main_window,
+                                    width=200,
+                                    height=8,
+                                    show='*')
+    
+    password_entry_box.pack()
+
+    #endregion
+
+    #region SIGN UP BUTTON
+
+    sign_up_button = ctk.CTkButton(main_window,
+                                    width=140,
+                                    height=20,
+                                    text='Sign Up',
+                                    command= sign_up_button_action)
+    sign_up_button.pack(padx=0,pady=50)
+
+    #endregion
+
+    #region ALREADY ACC LABEL
+    
+    already_acc_label = ctk.CTkLabel(main_window,
+                                        text='Already have an account?',
+                                        font=SUBTITLE_FONT)
+    already_acc_label.pack(padx=10, pady=2)
+    #endregion
+        
+    #region LOG_IN Button
+        
+    log_in_button = ctk.CTkButton(main_window,
+                                width=140,
+                                    height=20,
+                                    text='Log In',
+                                    command= lambda: [main_window.destroy(), log_in_button_action()])
+    log_in_button.pack(padx=15,pady=25)
+    #endregion
+        
+    #region SQLITE3
+    global sql_connection, cursor    
+    sql_connection = sqlite3.connect('database.db')
+    cursor = sql_connection.cursor()
+        
+    cursor.execute('''
+            CREATE TABLE IF NOT EXISTS users (
+                username TEXT NOT NULL,
+                password TEXT NOT NULL)''')
+        
+        
+    #endregion
+        
+    main_window.mainloop()
 #endregion
-    
-#region LOG_IN Button
-    
-log_in_button = ctk.CTkButton(main_window,
-                             width=140,
-                                 height=20,
-                                 text='Log In',
-                                 command= lambda: [main_window.destroy(), log_in_button_action()])
-log_in_button.pack(padx=15,pady=25)
-#endregion
-    
-#region SQLITE3
-    
-sql_connection = sqlite3.connect('database.db')
-cursor = sql_connection.cursor()
-    
-cursor.execute('''
-        CREATE TABLE IF NOT EXISTS users (
-            username TEXT NOT NULL,
-            password TEXT NOT NULL)''')
-    
-    
-#endregion
-    
-main_window.mainloop()
-    
 
 
 
 
+#
+
+new_main_window()
