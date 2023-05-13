@@ -1,0 +1,10 @@
+Nemam Vam puno toga za napisati, jako mi se sviđa što ste se potrudili i malo istraživali koje opcije imate da Vaša aplikacija na kraju još i izgleda ljepše. Mislim na uporabu CustomTkinter biblioteke.
+
+Ja bih preimenovao nazive objekata:
+- za prozore bih svakako koristio neki prikladniji naziv od main_window1, 2 i 3. Svakako ćete lakše prepoznati o kojem prozoru se radi.
+- drugi objekti možda ne bi bilo loše da imati prefiks koji opisuje koji je to widget, ali to nije toliki problem, jer i ovako ste dobro opisali te objekte pa je onda ovo više kao neka opcija.
+
+I bilo bi dobro kada biste dodali module da Vam je kod lakše održavati. Ali ako bude rasla ova aplikacija, onda ćete uskoro i to napraviti.
+
+Lp,
+Kruno.
