@@ -6,7 +6,6 @@ from tkinter import messagebox
 from tkinter import *
 
 
-
 #region FUNKCIJE
 def successfull_login():
     
@@ -20,6 +19,11 @@ def successfull_login():
                   font=TITLE_FONT,
                   bg='grey')
     title.grid(row=0,column=0)
+    
+    
+    
+    
+    
     
     
     
@@ -129,7 +133,21 @@ def log_in_button_action():
                                     command=valid_user_login)
     log_in_button.pack(padx=15,pady=25)
     #endregion
-        
+    
+    # BACK TO SIGN UP PAGE
+    
+    back_to_sign_up = ctk.CTkButton(main_window2,
+                                    width=140,
+                                    height=20,
+                                    text='Back to sign up page',
+                                    command= log_in_button_action)
+    
+    back_to_sign_up.pack(padx=20,pady=30)
+    
+    
+    
+    
+    
     main_window2.mainloop()
 #endregion
 
