@@ -8,16 +8,18 @@ from tkinter import *
 
 #region FUNKCIJE
 def successfull_login():
-    
     ctk.set_appearance_mode('System')
     main_window3 = ctk.CTk()
     main_window3.title('TERMINATOR 2 by DOK-ING')
-    main_window3.geometry('563x331')
+    main_window3.geometry('800x600')
     main_window3.iconbitmap('DOK-ING-Logo.ico')
     
-    bg = PhotoImage( file = "hydrogen.ppm")
-    bg_label = Label( main_window3, image = bg)
-    bg_label.place(x = 0,y = 0)
+    bg = PhotoImage( file = "background.png")
+    app_canvas = Canvas(main_window3, width=800 , height=600)
+    app_canvas.pack(fill='both', expand=True)
+    
+    app_canvas.create_image(0,0, image=bg, anchor='nw')
+    
     
     title = Label(main_window3,
                   text='TERMINATOR 2 by DOK-ING',
@@ -106,7 +108,7 @@ def log_in_button_action():
     global main_window2
     main_window2 = ctk.CTk()
     main_window2.title('TERMINATOR 2 by DOK-ING')
-    main_window2.geometry('563x331')
+    main_window2.geometry('800x600')
     main_window2.iconbitmap('DOK-ING-Logo.ico')
     ctk.set_appearance_mode('System')
         
@@ -177,7 +179,7 @@ def new_main_window():
     ctk.set_appearance_mode('System')
     main_window = ctk.CTk()
     main_window.title('TERMINATOR 2 by DOK-ING')
-    main_window.geometry('563x331')
+    main_window.geometry('800x600')
     main_window.iconbitmap('DOK-ING-Logo.ico')
     #endregion
 
